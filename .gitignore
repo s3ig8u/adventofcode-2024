@@ -1,0 +1,12 @@
+input/
+target/
+
+# Cargo.lock
+Cargo.lock
+
+.vscode/
+.idea/
+
+# .env
+
+main
