@@ -42,9 +42,7 @@ pub(crate) fn day1_part2(content: String) -> i32 {
 
     let mut answer: i32 = 0;
     for &val in column1.iter() {
-        if map.contains_key(&val) {
-            answer += val * map.get(&val).unwrap();
-        }
+        answer += val * map.get(&val).unwrap_or(&0);
     }
 
     answer
