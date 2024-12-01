@@ -51,8 +51,8 @@ func Day1_Part2(content string) int {
 
 	sum := 0
 	for _, val := range column1 {
-		if _, exists := countMap[val]; exists {
-			sum += val * countMap[val]
+		if count, exists := countMap[val]; exists {
+			sum += val * count
 		}
 	}
 
