@@ -1,9 +1,9 @@
 use std::collections::HashMap;
 
 // return tuple of two vectors (arrays)
-fn get_columns(content: String) -> (Vec<i32>, Vec<i32>) {
-    let mut column1: Vec<i32> = Vec::new();
-    let mut column2: Vec<i32> = Vec::new();
+fn get_columns(content: &str) -> (Vec<i32>, Vec<i32>) {
+    let mut column1: Vec<i32> = Vec::with_capacity(content.lines().count()); // allocate memory for n elements
+    let mut column2: Vec<i32> = Vec::with_capacity(content.lines().count()); // allocate memory for n elements
 
     for line in content.lines() {
         let values = line.split_whitespace().collect::<Vec<&str>>();
@@ -17,7 +17,7 @@ fn get_columns(content: String) -> (Vec<i32>, Vec<i32>) {
 
     (column1, column2)
 }
-pub(crate) fn day1_part1(content: String) -> i32 {
+pub(crate) fn day1_part1(content: &str) -> i32 {
     let (mut column1, mut column2) = get_columns(content);
 
     column1.sort();
@@ -32,7 +32,7 @@ pub(crate) fn day1_part1(content: String) -> i32 {
     answer
 }
 
-pub(crate) fn day1_part2(content: String) -> i32 {
+pub(crate) fn day1_part2(content: &str) -> i32 {
     let mut map: HashMap<i32, i32> = HashMap::new();
     let (column1, column2) = get_columns(content);
 
