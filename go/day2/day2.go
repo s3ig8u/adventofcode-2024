@@ -62,13 +62,13 @@ func find_valid_paths(values []int, idx int, path []int) bool {
 		if len(path) >= len(values)-1 {
 			return is_valid_path(path)
 		}
-		return false
+		return false 
 	}
 
 	// Try including current element
 	path = append(path, values[idx])
 	if find_valid_paths(values, idx+1, path) {
-		return true
+		return true // found valid path! no need to try other options
 	}
 
 	// backtrack to the previous state and try skipping the current element
@@ -90,7 +90,7 @@ func day2_part2(content string) int {
 
 		if is_valid_path(values) {
 			answer++
-			continue
+			continue // already valid, no need to find another path! 
 		}
 
 		if find_valid_paths(values, 0, []int{}) {
