@@ -1,25 +1,40 @@
 mod day1;
+mod day2;
 mod utils;
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let day = 1;
-
-    // time the execution
-    let start = std::time::Instant::now();
-
-    let content = utils::read_input_file(format!("../input/day{}.txt", day).as_str());
-
-    // pass content by reference instead of cloning it
-    let result_part1 = day1::day1_part1(&content);
-    let result_part2 = day1::day1_part2(&content);
-
-    println!("Day {} result part 1: {}", day, result_part1);
-    println!("Day {} result part 2: {}", day, result_part2);
+fn print_result(day: i32, result: (i32, i32), elapsed: std::time::Duration) {
+    println!("Day {} - Part 1: {}", day, result.0);
+    println!("Day {} - Part 2: {}", day, result.1);
     println!(
         "Execution time for day {}: {:?}ms",
         day,
-        start.elapsed().as_millis()
+        elapsed.as_millis()
     );
+}
+
+fn print_divider(day: i32) {
+    println!(
+        "########################## Day {} ##########################",
+        day
+    );
+}
+
+fn read_input_file(day: i32) -> String {
+    utils::read_input_file(format!("../input/day{}.txt", day).as_str())
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    print_divider(1);
+    let start = std::time::Instant::now();
+    let content = read_input_file(1);
+    let result1 = day1::day1(&content);
+    print_result(1, result1, start.elapsed());
+
+    print_divider(2);
+    let start = std::time::Instant::now();
+    let content = read_input_file(2);
+    let result2 = day2::day2(&content);
+    print_result(2, result2, start.elapsed());
 
     Ok(())
 }

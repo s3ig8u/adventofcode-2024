@@ -5,24 +5,26 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/s3ig8u/adventofcode-2024/utils"
 )
 
 func get_columns(content string) ([]int, []int) {
-	lines := strings.Split(content, "\n")
+	lines := strings.Split(content, utils.NEW_LINE)
 	n := len(lines)
 	column1 := make([]int, 0, n) // allocate slice with capacity n
 	column2 := make([]int, 0, n) // allocate slice with capacity n, this is more efficient than appending to a slice without a capacity
 
 	for _, line := range lines {
-		idx := strings.IndexByte(line, ' ')
+		idx := strings.IndexByte(line, utils.SPACE)
 		if idx == -1 {
 			continue
 		}
 
-		val1, _ := strconv.Atoi(line[:idx])                                // convert string to int
-		val2, _ := strconv.Atoi(line[strings.LastIndexByte(line, ' ')+1:]) // convert string to int
-		column1 = append(column1, val1)                                    // append to slice
-		column2 = append(column2, val2)                                    // append to slice
+		val1, _ := strconv.Atoi(line[:idx])                                        // convert string to int
+		val2, _ := strconv.Atoi(line[strings.LastIndexByte(line, utils.SPACE)+1:]) // convert string to int
+		column1 = append(column1, val1)                                            // append to slice
+		column2 = append(column2, val2)                                            // append to slice
 	}
 
 	return column1, column2
@@ -57,4 +59,8 @@ func Day1_Part2(content string) int {
 	}
 
 	return sum
+}
+
+func Day1(content string) (int, int) {
+	return Day1_Part1(content), Day1_Part2(content)
 }

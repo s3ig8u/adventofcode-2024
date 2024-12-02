@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use std::collections::HashMap;
 
 // return tuple of two vectors (arrays)
@@ -17,7 +19,7 @@ fn get_columns(content: &str) -> (Vec<i32>, Vec<i32>) {
 
     (column1, column2)
 }
-pub(crate) fn day1_part1(content: &str) -> i32 {
+fn day1_part1(content: &str) -> i32 {
     let (mut column1, mut column2) = get_columns(content);
 
     column1.sort();
@@ -32,7 +34,7 @@ pub(crate) fn day1_part1(content: &str) -> i32 {
     answer
 }
 
-pub(crate) fn day1_part2(content: &str) -> i32 {
+fn day1_part2(content: &str) -> i32 {
     let mut map: HashMap<i32, i32> = HashMap::new();
     let (column1, column2) = get_columns(content);
 
@@ -46,4 +48,8 @@ pub(crate) fn day1_part2(content: &str) -> i32 {
     }
 
     answer
+}
+
+pub(crate) fn day1(content: &str) -> (i32, i32) {
+    (day1_part1(content), day1_part2(content))
 }

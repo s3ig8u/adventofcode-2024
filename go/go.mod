@@ -1,3 +1,3 @@
-module github.com/s3ig8u/aoc-24
+module github.com/s3ig8u/adventofcode-2024
 
-go 1.22.0
+go 1.22
