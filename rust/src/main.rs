@@ -1,5 +1,7 @@
 mod day1;
 mod day2;
+mod day3;
+mod day4;
 mod utils;
 
 fn print_result(day: i32, result: (i32, i32), elapsed: std::time::Duration) {
@@ -35,6 +37,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let content = read_input_file(2);
     let result2 = day2::day2(&content);
     print_result(2, result2, start.elapsed());
+
+    print_divider(3);
+    let start = std::time::Instant::now();
+    let content = read_input_file(3);
+    let result3 = day3::day3(&content);
+    print_result(3, result3, start.elapsed());
+
+    print_divider(4);
+    let start = std::time::Instant::now();
+    let content = read_input_file(4);
+    let result4 = day4::day4(&content);
+    print_result(4, result4, start.elapsed());
 
     Ok(())
 }
