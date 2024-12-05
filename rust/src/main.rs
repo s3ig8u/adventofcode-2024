@@ -2,23 +2,17 @@ mod day1;
 mod day2;
 mod day3;
 mod day4;
+mod day5;
 mod utils;
 
 fn print_result(day: i32, result: (i32, i32), elapsed: std::time::Duration) {
     println!("Day {} - Part 1: {}", day, result.0);
     println!("Day {} - Part 2: {}", day, result.1);
-    println!(
-        "Execution time for day {}: {:?}ms",
-        day,
-        elapsed.as_millis()
-    );
+    println!("Execution time for day {}: {:?}ms", day, elapsed.as_millis());
 }
 
 fn print_divider(day: i32) {
-    println!(
-        "########################## Day {} ##########################",
-        day
-    );
+    println!("########################## Day {} ##########################", day);
 }
 
 fn read_input_file(day: i32) -> String {
@@ -49,6 +43,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let content = read_input_file(4);
     let result4 = day4::day4(&content);
     print_result(4, result4, start.elapsed());
+
+    print_divider(5);
+    let start = std::time::Instant::now();
+    let content = read_input_file(5);
+    let result5 = day5::day5(&content);
+    print_result(5, result5, start.elapsed());
 
     Ok(())
 }
